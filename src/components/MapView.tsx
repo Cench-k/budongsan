@@ -28,7 +28,7 @@ export const MapView: React.FC<MapViewProps> = ({ data }) => {
         if (!document.getElementById(scriptId)) {
           const script = document.createElement('script');
           script.id = scriptId;
-          const apiKey = import.meta.env.VITE_KAKAO_MAP_API_KEY;
+          const apiKey = '5fedabdd83da79958bd023d954af1f28';
           console.log("Kakao Map API Key being used:", apiKey);
           script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${apiKey}&libraries=services&autoload=false`;
           document.head.appendChild(script);
