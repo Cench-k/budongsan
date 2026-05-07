@@ -1,8 +1,5 @@
 .calculator-wrapper {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   margin: 0 auto;
   max-width: var(--max-width);
   z-index: 1000;
@@ -10,7 +7,7 @@
 }
 
 .calculator-wrapper.collapsed {
-  transform: translateY(calc(100% - 60px)); /* 슬라이더까지만 보이게 */
+  transform: translateY(0); /* fixed가 아니므로 접기 효과는 무효화하거나 레이아웃에 맞게 조정 (임시로 0 처리) */
 }
 
 .toggle-handle {
