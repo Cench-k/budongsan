@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* 라이트 테마 (기본) */
+  --bg-color: #f8fafc;
+  --surface-color: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  
+  /* 포인트 컬러 */
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  
+  /* 신호등 상태 컬러 */
+  --status-safe: #10b981;    /* 초록 - 소멸, 안전 */
+  --status-warning: #f59e0b; /* 노랑 - 주의 */
+  --status-danger: #ef4444;  /* 빨강 - 인수, 위험 */
+  
+  /* 그림자 & UI 토큰 */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-float: 0 -10px 20px -5px rgb(0 0 0 / 0.1);
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
+  
+  /* 레이아웃 */
+  --max-width: 600px;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --max-width: 1200px;
+  }
+}
+
+[data-theme='dark'] {
+  /* 다크 테마 */
+  --bg-color: #0f172a;
+  --surface-color: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border-color: #334155;
+  
+  --primary: #60a5fa;
+  --primary-hover: #3b82f6;
+  
+  --status-safe: #34d399;
+  --status-warning: #fbbf24;
+  --status-danger: #f87171;
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --shadow-float: 0 -10px 20px -5px rgb(0 0 0 / 0.5);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--surface-color);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Glassmorphism 유틸리티 */
+.glass {
+  background: rgba(var(--surface-color), 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border-color);
+}
+
+/* 상태 뱃지 공통 스타일 */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.badge-safe {
+  background-color: color-mix(in srgb, var(--status-safe) 15%, transparent);
+  color: var(--status-safe);
+}
+
+.badge-danger {
+  background-color: color-mix(in srgb, var(--status-danger) 15%, transparent);
+  color: var(--status-danger);
+}
+
+.badge-neutral {
+  background-color: var(--border-color);
+  color: var(--text-secondary);
+}
