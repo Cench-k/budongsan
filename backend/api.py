@@ -14,13 +14,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/api/auction/{case_number}")
-async def get_auction_data(case_number: str):
+@app.get("/api/auction/{court_name}/{case_number}")
+async def get_auction_data(court_name: str, case_number: str):
     """
-    프론트엔드에서 사건번호를 넘기면,
+    프론트엔드에서 관할법원과 사건번호를 넘기면,
     크롤러를 통해 파싱된 데이터를 반환합니다.
     """
-    data = crawl_auction_case(case_number)
+    data = crawl_auction_case(court_name, case_number)
     return data
 
 if __name__ == "__main__":

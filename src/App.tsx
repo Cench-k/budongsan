@@ -12,12 +12,12 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchAuctionData = async (caseNumber: string) => {
+  const fetchAuctionData = async (courtName: string, caseNumber: string) => {
     setLoading(true);
     setError(null);
     try {
       const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8080';
-      const response = await fetch(`${API_URL}/api/auction/${caseNumber}`);
+      const response = await fetch(`${API_URL}/api/auction/${encodeURIComponent(courtName)}/${encodeURIComponent(caseNumber)}`);
       if (!response.ok) throw new Error('데이터를 불러오는데 실패했습니다.');
       const result = await response.json();
       setData(result);
@@ -30,7 +30,7 @@ function App() {
 
   // 초기 데이터 로드 (더미 사건번호)
   useEffect(() => {
-    fetchAuctionData('2023타경12345');
+    fetchAuctionData('서울중앙지방법원', '2023타경12345');
   }, []);
 
   return (
